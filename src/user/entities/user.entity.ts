@@ -11,7 +11,7 @@ export class userEntity
     username: string;
     @Column({length:50})
     lastname: string;
-    @Column({length:50})
+    @Column()
     password: string;
     @Column({
         type:"enum",
