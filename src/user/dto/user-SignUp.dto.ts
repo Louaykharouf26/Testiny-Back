@@ -5,6 +5,7 @@ import {
     MaxLength,
     IsEmail,
   } from 'class-validator';
+import { UserRoleEnum } from 'src/enums/user-role.enum';
 export class UserSignUpDto {
  @IsNotEmpty()
  username:string;
@@ -15,4 +16,6 @@ export class UserSignUpDto {
  lastname:string;
 @IsNotEmpty()
 password:string;
+@IsNotEmpty()
+role:UserRoleEnum;
 }

@@ -7,16 +7,16 @@ export class userEntity
     id = Id();
     @Column({unique:true})
     email:string;
-    @Column({length:50})
+    @Column()
     username: string;
-    @Column({length:50})
+    @Column()
     lastname: string;
     @Column()
     password: string;
     @Column({
         type:"enum",
         enum:UserRoleEnum,
-        default:UserRoleEnum.developer
+       default:UserRoleEnum.developer
     })
     roles : string;
     @Column()

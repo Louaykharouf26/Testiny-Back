@@ -1,7 +1,10 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { User } from 'src/decorators/user.decorator';
 import { UserLoginDto } from './dto/user-login.dto';
 import { UserSignUpDto } from './dto/user-SignUp.dto';
 import { userEntity } from './entities/user.entity';
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { UserService } from './user.service';
 
 
@@ -13,7 +16,15 @@ export class UserController {
      return this.userService.SignUp(userinfo);
     }
     @Post('login')
-    Login(@Body() userlogin:UserLoginDto):Promise<userEntity>{
+    Login(@Body() userlogin:UserLoginDto){
      return this.userService.login(userlogin);
     }
+   
+    @Get('show')
+    @UseGuards(JwtAuthGuard)
+    findAll(@User() user) {
+      return this.userService.findAll(user);
+    }
 }
+
+
