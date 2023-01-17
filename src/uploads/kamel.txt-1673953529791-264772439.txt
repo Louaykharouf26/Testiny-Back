@@ -1,0 +1,25 @@
+Etudes des techniques de l'IA pour l'amélioration des performances des réseaux haut débits
+
+
+--> Introduction : l'importance du reseau haut debit (l'utilisation frequente -> beaucoup de donnée partagé / l'utilisation mene a des problemes de performances )
+ l'amelioration des performances du reseau est necessaire 
+ integration de l'AI comme solution pour l'amerliration 
+
+ Reseau haut debit + AI (definition + techniques) + Domaines de reseau haut debit (cybersecurity) + Relation AI/RHD + pratique 
+
+
+ Bibliographie 
+ 1- reseau haut debit : https://essonnenumerique.com/cest-quoi-le-thd/quest-ce-quun-reseau-tres-haut-debit/ 
+    avantages : https://fcmicro.net/12-avantages-du-tres-haut-debit-pour-les-entreprises/ 
+    limites : https://www.hitechwhizz.com/2021/01/5-advantages-and-disadvantages-drawbacks-benefits-of-broadband-connection.html 
+ 2- AI : https://www.oracle.com/fr/artificial-intelligence/what-is-ai/
+    domaine d'application : https://www.cmsinfo.org/high-tech/domaines-application-intelligence-artificielle/
+ 3- cybersecurité : https://www.cisco.com/c/fr_ca/products/security/what-is-cybersecurity.html 
+    domaines + menaces : https://www.ibm.com/fr-fr/topics/cybersecurity 
+ 4 - IA dans la cybersecurite : https://en.cybersecuritymag.africa/applications-intelligence-artificielle-monde-cybersecurite 
+     IDS + IPS : https://cisco.goffinet.org/ccna/filtrage/concept-ids-ips/ 
+     Siem : https://www.microsoft.com/fr-ww/security/business/security-101/what-is-siem
+     
+5 - Data set link : https://www.unb.ca/cic/datasets/ids-2017.html
+6- apprentissage supervisé https://fr.linedata.com/quest-ce-que-lapprentissage-supervise
+Random forest https://dataanalyticspost.com/Lexique/random-forest/

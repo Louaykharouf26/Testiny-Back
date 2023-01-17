@@ -8,11 +8,12 @@ import {JwtModule} from "@nestjs/jwt";
 import { JwtStrategy } from './strategy/jwt-passport.startegy';
 import { ConfigModule } from '@nestjs/config';
 import { jwtConstants } from './strategy/constants';
+import {MulterModule} from "@nestjs/platform-express";
 
 @Module({
     controllers: [UserController],
     providers: [UserService,JwtStrategy],
-    imports: [TypeOrmModule.forFeature([userEntity]),ConfigModule, PassportModule.register({
+    imports: [MulterModule.register({dest: './uploads'}),TypeOrmModule.forFeature([userEntity]),ConfigModule, PassportModule.register({
       defaultStrategy: 'jwt'
   }),
       JwtModule.register({

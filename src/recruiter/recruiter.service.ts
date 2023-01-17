@@ -1,22 +1,24 @@
 import { ConflictException, Injectable, NotFoundException, Param } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { UserSignUpDto } from './dto/user-SignUp.dto';
-import { userEntity } from './entities/user.entity';
+import {RecruiterSignUpDto} from './dto/recruiter-SignUp.dto';
+import { recruiterEntity } from './entities/recruiter.entity';
 import * as bcrypt from 'bcrypt';
-import { UserLoginDto} from "./dto/user-login.dto";
+import {RecruiterLoginDto} from './dto/recruiter-login.dto'
 import {JwtService} from "@nestjs/jwt";
 import { UserRoleEnum } from 'src/enums/user-role.enum';
+import { userEntity } from 'src/user/entities/user.entity';
 @Injectable()
-export class UserService {
+export class RecruiterService {
     constructor(
-        @InjectRepository(userEntity)
-        private userRepository:Repository<userEntity>,
+        @InjectRepository(recruiterEntity)
+        
+        private userRepository:Repository<recruiterEntity>,
         private  jwtService: JwtService
     ){}
-  async SignUp(userinfo:UserSignUpDto): Promise<userEntity> {
+  async SignUpRecruiter(recruiterinfo:RecruiterSignUpDto): Promise<recruiterEntity> {
     
-    const user = this.userRepository.create({...userinfo});
+    const user = this.userRepository.create({...recruiterinfo});
     
     user.salt= await bcrypt.genSalt();
     user.password= await bcrypt.hash(user.password,user.salt);
@@ -29,7 +31,7 @@ export class UserService {
      return user;
     }
    
-    async login(creds:UserLoginDto) {
+    async login(creds:RecruiterLoginDto) {
         const {email, password} = creds;
         
         const user = await this.userRepository.createQueryBuilder("user")
@@ -55,11 +57,11 @@ export class UserService {
         }
         else {throw new NotFoundException(" password error")}
     }
-    async findAll(user): Promise<userEntity[]> {
+    async findAll(user): Promise<recruiterEntity[]> {
         return this.userRepository.find(user);
         //return `This action returns all cv`;
       }
-      async getUserById(id: number): Promise<UserLoginDto>{
+      async getUserById(id: number): Promise<RecruiterLoginDto>{
         const userId = await this.userRepository.findOneBy({ id: id });
         console.log(userId,id);
     
@@ -69,19 +71,8 @@ export class UserService {
     return userId;
         
       }
-      async getUserByRole(devid):Promise<[userEntity[],number]>{
-        const userRole = this.userRepository.findAndCount({            
-            relations: {recruiter:true},
-            where: {
-                recruiter: {id:devid}
-            },
-        });
-        return userRole;
-       }
-       async deleteById(id){
-        const userdeleted = this.userRepository.softDelete(id)
-        return userdeleted;
-       }
+
+      
 }
 
 

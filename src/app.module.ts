@@ -2,7 +2,10 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+
 import { UserModule } from './user/user.module';
+import { UserService } from './user/user.service';
+import { RecruiterModule } from './recruiter/recruiter.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -11,11 +14,11 @@ import { UserModule } from './user/user.module';
     port: 3306,
     username: 'root',
     password: '',
-    database: 'testplateforme',
+    database: 'projetnest',
     autoLoadEntities: true,
     synchronize: true,
     logging: true,
-  }), UserModule,],
+  }),UserModule, RecruiterModule],
   controllers: [AppController],
   providers: [AppService],
 })

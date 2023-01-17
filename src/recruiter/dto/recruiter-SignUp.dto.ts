@@ -6,7 +6,7 @@ import {
     IsEmail,
   } from 'class-validator';
 import { UserRoleEnum } from 'src/enums/user-role.enum';
-export class UserSignUpDto {
+export class RecruiterSignUpDto {
  @IsNotEmpty()
  username:string;
  @IsNotEmpty()
@@ -16,6 +16,5 @@ export class UserSignUpDto {
  lastname:string;
 @IsNotEmpty()
 password:string;
-/*@IsNotEmpty()
-role:"Developer";*/
+
 }
