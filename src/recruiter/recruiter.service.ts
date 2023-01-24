@@ -59,7 +59,7 @@ export class RecruiterService {
     }
     async findAll(user): Promise<recruiterEntity[]> {
         return this.userRepository.find(user);
-        //return `This action returns all cv`;
+        
       }
       async getUserById(id: number): Promise<RecruiterLoginDto>{
         const userId = await this.userRepository.findOneBy({ id: id });

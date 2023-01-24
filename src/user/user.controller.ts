@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseEnumPipe, Post, Res, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseEnumPipe, Post, Req, Res, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
@@ -40,7 +40,7 @@ export class UserController {
      @UseInterceptors(
          FileInterceptor('file',{
          storage: diskStorage({
-             destination:'src/uploads',
+             destination:'C:/Users/louay/Desktop/Projet Scrum/test_me/src/uploads',
              filename: (req, file, callback) => {
                  const uniqueSuffix =
                      Date.now()+'-'+Math.round(Math.random()*1e9);
@@ -60,6 +60,16 @@ export class UserController {
          res.sendFile(file, {root:'src/uploads'});
          
      }
+     @UseGuards(AuthGuard('jwt'))
+  @Post('logout')
+  async logout(@Req() req, @Res() res) {
+  /* await req.logout(err => {
+    console.log(err);
+    return false;
+  });*/
+  req.logout((err)=>{console.log(err)})
+    return res.send();
+  }
  }
 
 

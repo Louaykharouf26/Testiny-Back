@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { User } from 'src/decorators/user.decorator';
-import { UserLoginDto } from 'src/user/dto/user-login.dto';
+//import { UserLoginDto } from 'src/user/dto/user-login.dto';
+import { RecruiterLoginDto } from './dto/recruiter-login.dto';
 import { JwtAuthGuard } from 'src/user/guards/jwt-auth.guard';
 
 import { RecruiterSignUpDto } from './dto/recruiter-SignUp.dto';
@@ -16,7 +17,7 @@ export class RecruiterController {
     return this.recruiterService.SignUpRecruiter(recruiterinfo);
     }
     @Post('login')
-    Login(@Body() userlogin:UserLoginDto){
+    Login(@Body() userlogin:RecruiterLoginDto){
      return this.recruiterService.login(userlogin);
     }
    
@@ -26,6 +27,7 @@ export class RecruiterController {
       return this.recruiterService.findAll(user);
     }
     @Get('showById/:id')
-   async findById(@Param('id') id:number):Promise<UserLoginDto>
+   async findById(@Param('id') id:number):Promise<RecruiterLoginDto>
     {return this.recruiterService.getUserById(id);}
+    
 }
